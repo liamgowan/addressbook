@@ -15,7 +15,7 @@ import java.util.logging.Logger;
 // class and nothing Vaadin specific.
 public class ContactService {
 
-    // Create dummy data by randomly combining first and last names
+    // Create dummy data by randomly combining first and last names and tasks
     static String[] fnames = { "Peter", "Alice", "John", "Mike", "Olivia",
             "Nina", "Alex", "Rita", "Dan", "Umberto", "Henrik", "Rene", "Lisa",
             "Linda", "Timothy", "Daniel", "Brian", "George", "Scott",
@@ -24,9 +24,16 @@ public class ContactService {
             "Brown", "Davis", "Miller", "Wilson", "Moore", "Taylor",
             "Anderson", "Thomas", "Jackson", "White", "Harris", "Martin",
             "Thompson", "Young", "King", "Robinson" };
+    //tasks
+    static String[] tasks= {"Water the plants", "Feed the dog", "Feed the cat", "Walk the dog",
+    		"Buy Milk", "Finish CSCI 3130 Assignment", "Shoot hoops with CSCI 3130 TA's", "Take out garbage",
+    		"Apply for job", "Make dentists appointment", "Take kids to soccer", "Buy batteries", "Graduate Dal",
+    		"Think of task dummy data", "Repair bird bath", "Garden","Exercise", "Fix bike tire", "Call Grandma",
+    		"Read chapter 3"};
 
     private static ContactService instance;
 
+    //This has been modified to put tasks and expected end dates in dummy data
     public static ContactService createDemoService() {
         if (instance == null) {
 
@@ -38,12 +45,17 @@ public class ContactService {
                 Contact contact = new Contact();
                 contact.setFirstName(fnames[r.nextInt(fnames.length)]);
                 contact.setLastName(lnames[r.nextInt(fnames.length)]);
+                contact.setTask(tasks[r.nextInt(tasks.length)]);
                 contact.setEmail(contact.getFirstName().toLowerCase() + "@"
                         + contact.getLastName().toLowerCase() + ".com");
                 contact.setPhone("+ 358 555 " + (100 + r.nextInt(900)));
-                cal.set(1930 + r.nextInt(70),
+                cal.set(1930 + r.nextInt(45),
                         r.nextInt(11), r.nextInt(28));
-                contact.setBirthDate(cal.getTime());
+                contact.setStartDate(cal.getTime());
+                cal.set(1975+r.nextInt(45), 
+                		r.nextInt(11), r.nextInt(28));
+                contact.setExpectedEndDate(cal.getTime());
+                
                 contactService.save(contact);
             }
             instance = contactService;

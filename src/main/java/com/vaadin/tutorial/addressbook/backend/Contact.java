@@ -21,7 +21,9 @@ public class Contact implements Serializable, Cloneable {
     private String lastName = "";
     private String phone = "";
     private String email = "";
-    private Date birthDate;
+    private String task = "";
+    private Date startDate;
+    private Date expectedEndDate;
 
     public Long getId() {
         return id;
@@ -62,13 +64,29 @@ public class Contact implements Serializable, Cloneable {
     public void setEmail(String email) {
         this.email = email;
     }
-
-    public Date getBirthDate() {
-        return birthDate;
+    //This has been modified to include getters and setters for tasks, start dates and expected end dates
+    public String getTask() {
+        return task;
     }
 
-    public void setBirthDate(Date birthDate) {
-        this.birthDate = birthDate;
+    public void setTask(String task) {
+        this.task = task;
+    }
+
+    public Date getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
+    
+    public Date getExpectedEndDate() {
+        return expectedEndDate;
+    }
+
+    public void setExpectedEndDate(Date expectedEndDate) {
+        this.expectedEndDate = expectedEndDate;
     }
 
     @Override
@@ -79,12 +97,13 @@ public class Contact implements Serializable, Cloneable {
             throw new CloneNotSupportedException();
         }
     }
-
+//Has been modified to include task, start date and expected end date information
     @Override
     public String toString() {
         return "Contact{" + "id=" + id + ", firstName=" + firstName
                 + ", lastName=" + lastName + ", phone=" + phone + ", email="
-                + email + ", birthDate=" + birthDate + '}';
+                + email + ", startDate=" + startDate + ", endDate="+expectedEndDate+"task="+task+'}';
     }
 
 }
+

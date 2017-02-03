@@ -23,13 +23,16 @@ import com.vaadin.v7.ui.TextField;
  */
 public class ContactForm extends FormLayout {
 
+	//This has been modified to include task, start and expected end date
     Button save = new Button("Save", this::save);
     Button cancel = new Button("Cancel", this::cancel);
     TextField firstName = new TextField("First name");
     TextField lastName = new TextField("Last name");
     TextField phone = new TextField("Phone");
     TextField email = new TextField("Email");
-    DateField birthDate = new DateField("Birth date");
+    TextField task = new TextField ("Task");
+    DateField startDate = new DateField("Start Date");
+    DateField expectedEndDate = new DateField("Expected End Date");
 
     Contact contact;
 
@@ -59,8 +62,8 @@ public class ContactForm extends FormLayout {
 
         HorizontalLayout actions = new HorizontalLayout(save, cancel);
         actions.setSpacing(true);
-
-        addComponents(actions, firstName, lastName, phone, email, birthDate);
+      //modified to include task, start and end date
+        addComponents(actions, firstName, lastName, task, phone, email, startDate, expectedEndDate);
     }
 
     /*

@@ -24,7 +24,7 @@ import com.vaadin.v7.ui.TextField;
  * By default, a new UI instance is automatically created when the page is loaded. To reuse
  * the same instance, add @PreserveOnRefresh.
  */
-@Title("Addressbook")
+@Title("To Do List")
 @Theme("valo")
 @Widgetset("com.vaadin.v7.Vaadin7WidgetSet")
 public class AddressbookUI extends UI {
@@ -38,7 +38,9 @@ public class AddressbookUI extends UI {
      */
     TextField filter = new TextField();
     Grid contactList = new Grid();
-    Button newContact = new Button("New contact");
+    //modified to say task instead of Contact
+    
+    Button newTask = new Button("New Task");
 
     // ContactForm is an example of a custom component class
     ContactForm contactForm = new ContactForm();
@@ -69,17 +71,18 @@ public class AddressbookUI extends UI {
          * to synchronously handle those events. Vaadin automatically sends only
          * the needed changes to the web page without loading a new page.
          */
-        newContact.addClickListener(e -> contactForm.edit(new Contact()));
-
-        filter.setInputPrompt("Filter contacts...");
+        newTask.addClickListener(e -> contactForm.edit(new Contact()));
+        //modified to say tasks instead of contacts
+        filter.setInputPrompt("Filter tasks...");
         filter.addTextChangeListener(e -> refreshContacts(e.getText()));
 
         contactList
                 .setContainerDataSource(new BeanItemContainer<>(Contact.class));
-        contactList.setColumnOrder("firstName", "lastName", "email");
+        //modified to include columns for first name, last name, tasks, start and expected end dates
+        contactList.setColumnOrder("firstName", "lastName", "task","startDate", "expectedEndDate");
         contactList.removeColumn("id");
-        contactList.removeColumn("birthDate");
         contactList.removeColumn("phone");
+        contactList.removeColumn("email");
         contactList.setSelectionMode(Grid.SelectionMode.SINGLE);
         contactList.addSelectionListener(
                 e -> contactForm.edit((Contact) contactList.getSelectedRow()));
@@ -98,7 +101,7 @@ public class AddressbookUI extends UI {
      * choose to setup layout declaratively with Vaadin Designer, CSS and HTML.
      */
     private void buildLayout() {
-        HorizontalLayout actions = new HorizontalLayout(filter, newContact);
+        HorizontalLayout actions = new HorizontalLayout(filter, newTask);
         actions.setWidth("100%");
         filter.setWidth("100%");
         actions.setExpandRatio(filter, 1);
