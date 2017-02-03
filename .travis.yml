@@ -3,4 +3,11 @@ install:
 - mvn install
 jdk:
 - oraclejdk8
-
+deploy:
+  provider: heroku
+  api_key:
+    secure: QXRYVaRBmtflIOZVQjMLtD/JlSrzxCLP8N+JX6AwArJerxq68FuNLSCvXypb2yY9T2dOsfZ/SZgKmD5OuW7mBrhYDc7h9437U59M3SMpNNzVn+gfflNtAVn7MJqq7qTPkQ0NRVW8TVYgsPut9CF6NpvGSI/cIeGa4j99piJ3QTUqCgRvZaWEXoP/4589uS5uGocaBF5al9sd2lJHFcwQYZwIwBZP1WZdYOIV8aHT8mlkMfKbDVkkquIilp/psrFBzr48pL6tqXuZjxdj3AnG1ZYz1AFO7nhR7Wiep6wkT3d11PVXsPMaZ9J5kU0ZpdmaEGiY8K00ztGFTPii98yLPzp1rx4APS7e3GLUIwe7GWkiBDk6u/S+GvMavfEsSsA/aDceMeiWTSEYEMRZs/lRRQMXn8Rp9B3Z048mjoo4GJKLmcouwhWKPgGXcBtd49Z96+dmGIcUVOFhSXTPRTwOPKuICVcF+FjqHN+A8o9SfoZ7+BXgt/Jx864MgvroASckte5PTOJ1dLZlocOE2DQ25vkFZ6yTjVHbcKZCGG12YNw0Iz765KenscJvS3tC1mzTUBbdV3ifsVrM2lEiSa/Y197NUWCbRoFH8/ybV4S1XovEdGuUYDaakCpdMN4vpoUmLGdCtYpAWMNWpN5XeCUeM5L51pNcMOKEKI6klgFJpUM=
+  app: liamgowan-todolist
+  on:
+    repo: liamgowan/addressbook
+    branch: todo_tasks
